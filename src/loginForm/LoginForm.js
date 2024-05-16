@@ -9,6 +9,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const[emailValid,setEmailVaild] = useState(false);
   const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
@@ -22,6 +23,7 @@ const LoginForm = () => {
     } else if (!emailRegex.test(email)) {
       setError(t("invalid_email"));
     } else {
+      setEmailVaild(true);
       setError("");
     }
   }, [email, t]);
@@ -32,10 +34,10 @@ const LoginForm = () => {
       alert(t("fill_detail"));
       return;
     }
-    if (email === "admin@gmail.com" && password === "admin") {
+    if (emailValid) {
       navigate("/landing");
     } else {
-      alert(t("wrong_credentials"));
+      //alert(t("wrong_credentials"));
       console.log("Login failed");
     }
   };
