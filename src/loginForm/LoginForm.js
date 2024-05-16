@@ -28,7 +28,6 @@ const LoginForm = () => {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    console.log(email, password);
     if (email === "" || password === "") {
       alert(t("fill_detail"));
       return;
